@@ -1,0 +1,57 @@
+<launch>
+    <arg name="motor_num" doc="motor_num"/>
+    <arg name="slave_name" doc="slave_name"/>
+    <arg name="slave_arch" doc="EcatSlaveArch"/>
+    <arg name="command_unit" doc="command_unit"/>
+    <arg name="slave_inc" doc="slave_inc"/>
+    <arg name="slave_unit" doc="slave_unit"/>
+    <arg name="gear_ratio" doc="gear_ratio"/>
+    <arg name="motor_tick" doc="motor_tick"/>
+    <arg name="hom_offset" doc="hom_offset"/>
+    <arg name="min_val" doc="min_val"/>
+    <arg name="max_val" doc="max_val"/>
+    <arg name="pully_pd_mm" doc="pully_pd_mm"/>
+    <arg name="screw_lead_mm" doc="screw_lead_mm"/>
+    <arg name="wheel_radius" doc="wheel_radius"/>
+    <arg name="min_val_per_sec" doc="min_val_per_sec"/>
+    <arg name="max_val_per_sec" doc="max_val_per_sec"/>
+    <arg name="message_display" default="screen" doc="output type"/>
+    <arg name="main_hz" default="1000" doc="main loop herz"/>
+    <arg name="ifname" default="" doc="ifname"/>
+    <arg name="launch_prefix" default="" doc="launch_prefix"/>
+    <arg name="inv_motor_in_arr" doc="inv_motor_in_arr"/>
+    <arg name="qmsg_ts_period" default="0.1" doc="qmsg_ts_period"/>
+    <arg name="pub_ts_period" default="0.1" doc="pub_ts_period"/>
+    <arg name="ecat_drive_mode" doc="EcatDriveMode"/>
+    <arg name="freerun" default="0" doc="freerun"/>
+    <arg name="acc_dec_factor" default="1.0" doc="acc_dec_factor"/>
+    <arg name="sdo_ca_support" default="1" doc="sdo_ca_support"/>
+
+    <node pkg="ecat" type="ecat" name="ecat" launch-prefix="$(arg launch_prefix)" output="$(arg message_display)">
+        <param name="motor_num" value="$(arg motor_num)"/>
+        <rosparam param="slave_name" subst_value="true">$(arg slave_name)</rosparam>
+        <rosparam param="slave_arch" subst_value="true">$(arg slave_arch)</rosparam>
+        <rosparam param="command_unit" subst_value="true">$(arg command_unit)</rosparam>
+        <rosparam param="slave_inc" subst_value="true">$(arg slave_inc)</rosparam>
+        <rosparam param="slave_unit" subst_value="true">$(arg slave_unit)</rosparam>
+        <rosparam param="gear_ratio" subst_value="true">$(arg gear_ratio)</rosparam>
+        <rosparam param="motor_tick" subst_value="true">$(arg motor_tick)</rosparam>
+        <rosparam param="hom_offset" subst_value="true">$(arg hom_offset)</rosparam>
+        <rosparam param="min_val" subst_value="true">$(arg min_val)</rosparam>
+        <rosparam param="max_val" subst_value="true">$(arg max_val)</rosparam>
+        <rosparam param="pully_pd_mm" subst_value="true">$(arg pully_pd_mm)</rosparam>
+        <rosparam param="screw_lead_mm" subst_value="true">$(arg screw_lead_mm)</rosparam>
+        <rosparam param="wheel_radius" subst_value="true">$(arg wheel_radius)</rosparam>
+        <rosparam param="min_val_per_sec" subst_value="true">$(arg min_val_per_sec)</rosparam>
+        <rosparam param="max_val_per_sec" subst_value="true">$(arg max_val_per_sec)</rosparam>
+        <param name="main_hz" value="$(arg main_hz)"/>
+        <param name="ifname" value="$(arg ifname)"/>
+        <rosparam param="inv_motor_in_arr" subst_value="true">$(arg inv_motor_in_arr)</rosparam>
+        <param name="qmsg_ts_period" value="$(arg qmsg_ts_period)"/>
+        <param name="pub_ts_period" value="$(arg pub_ts_period)"/>
+        <rosparam param="ecat_drive_mode" subst_value="true">$(arg ecat_drive_mode)</rosparam>
+        <param name="freerun" value="$(arg freerun)"/>
+        <param name="acc_dec_factor" value="$(arg acc_dec_factor)"/>
+        <param name="sdo_ca_support" value="$(arg sdo_ca_support)"/>
+    </node>
+</launch>

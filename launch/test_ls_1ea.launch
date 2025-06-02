@@ -1,0 +1,19 @@
+<launch>
+    <arg name="message_display" default="screen"/>
+    <arg name="profile" default="$(find ecat)/test/rpm/profile.yaml"/>
+    <arg name="main_hz" default="10000"/>
+    <arg name="wheel_num" default="1"/>
+
+    <include file="$(find recipelab)/launch/recipelab_minimal.launch"/>
+
+    <include file="$(find ecat)/launch/base_ls_1ea.launch">
+        <!-- <arg name="message_display" value="screen"/> -->
+        <arg name="message_display" value="log"/>
+    </include>
+
+    <node pkg="ecat" type="test_rpm" name="test_rpm" output="$(arg message_display)">
+        <param name="main_hz" value="$(arg main_hz)"/>
+        <param name="wheel_num" value="$(arg wheel_num)"/>
+        <rosparam file="$(arg profile)" command="load"/>
+    </node>
+</launch>

@@ -1,0 +1,41 @@
+<launch>
+    <arg name="motor_num" value="9"/>
+    <arg name="message_display" default="screen" doc="output type"/>
+    <arg name="main_hz" default="1000" doc="main loop herz"/>
+    <arg name="ifname" default="ecat" doc="ifname"/>
+    <arg name="launch_prefix" default="ethercat_grant" doc="launch_prefix"/>
+    <arg name="inv_motor_in_arr" default="[+0.0, +1.0, +1.0, +1.0, -1.0, +0.0, +1.0, +1.0, +1.0]" doc="inv_motor_in_arr"/>
+    <arg name="ecat_drive_mode" default="[0, 1, 1, 1, 1, 0, 1, 1, 1]" doc="ecat_drive_mode"/>
+    <!-- <arg name="ecat_drive_mode" default="[0, 3, 4, 3, 4, 0, 3, 3, 3]" doc="ecat_drive_mode"/> -->
+    <arg name="freerun" default="1" doc="freerun"/>
+    
+    <include file="$(find ecat)/launch/base.launch">
+        <arg name="motor_num" value="$(arg motor_num)"/>
+        <arg name="slave_name" value="[junc1, swivel_fl, wheel_fl, swivel_fr, wheel_fr, junc2, stage_x1, stage_x2, stage_z]"/>
+        <!-- <arg name="slave_arch" value="[none, gear, gear, gear, gear, none, gear_pully, gear_pully, ballscrew]"/> -->
+        <arg name="slave_arch" default="[0, 1, 2, 1, 2, 0, 3, 3, 4]" doc="slave_arch"/>
+        <arg name="command_unit" value="[none, rad, m/s, rad, m/s, none, mm, mm, mm]"/>
+        <arg name="slave_inc" value="[none, ls, welcon, ls, welcon, none, ls, ls, ls]"/>
+        <arg name="slave_unit" value="[none, UU, rpm, UU, rpm, none, UU, UU, UU]"/>
+        <arg name="gear_ratio" value="[+0.0, +150.0, +50.0, +150.0, +50.0, +0.0, +30.0, +30.0, +1.0]"/>
+        <arg name="motor_tick" value="[+0.0, +524288.0, +10000.0, +524288.0, +10000.0, +0.0, +524288.0, +524288.0, +524288.0]"/>
+        <arg name="hom_offset" value="[+0.0, +0.0, +0.0, +0.0, +0.0, +0.0, +0.0, +0.0, +0.0]"/>
+        <!-- <arg name="min_val" value="[+0.0, -0.7, -0.5, -0.7, -0.5, +0.0, -0.1, -0.1, +0.0]"/>
+        <arg name="max_val" value="[+0.0, +0.7, +0.5, +0.7, +0.5, +0.0, +0.1, +0.1, +0.1]"/> -->
+        <arg name="min_val" value="[+0.0, -0.79, -0.5, -0.79, -0.5, +0.0, -500.0, -500.0, +0.0]"/>
+        <arg name="max_val" value="[+0.0, +0.79, +0.5, +0.79, +0.5, +0.0, +500.0, +500.0, +200.0]"/>
+        <!-- <arg name="pully_pd_mm" value="[+0.0, +0.0, +0.0, +0.0, +0.0, +0.0, +57.3, +57.3, +0.0]"/> -->
+        <arg name="pully_pd_mm" value="[+0.0, +0.0, +0.0, +0.0, +0.0, +0.0, +114.6, +57.3, +0.0]"/>
+        <arg name="screw_lead_mm" value="[+0.0, +0.0, +0.0, +0.0, +0.0, +0.0, +0.0, +0.0, +5.0]"/>
+        <arg name="wheel_radius" value="[+0.0, +0.0, +0.27, +0.0, +0.27, +0.0, +0.0, +0.0, +0.0]"/>
+        <arg name="min_val_per_sec" value="[+0.0, +0.01, +0.1, +0.01, +0.1, +0.0, +5.0, +5.0, +5.0]"/>
+        <arg name="max_val_per_sec" value="[+0.0, +0.5, +0.5, +0.5, +0.5, +0.0, +20.0, +20.0, +20.0]"/>
+        <arg name="message_display" value="$(arg message_display)"/>
+        <arg name="main_hz" value="$(arg main_hz)"/>
+        <arg name="ifname" value="$(arg ifname)"/>
+        <arg name="launch_prefix" value="$(arg launch_prefix)"/>
+        <arg name="inv_motor_in_arr" value="$(arg inv_motor_in_arr)"/>
+        <arg name="ecat_drive_mode" value="$(arg ecat_drive_mode)"/>
+        <arg name="freerun" value="$(arg freerun)"/>
+    </include>
+</launch>

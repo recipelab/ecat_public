@@ -1,0 +1,12 @@
+float64 ts
+int32 init
+int32 ec_slavecount
+int32 ec_slave_0_Obytes
+int32 ec_slave_0_Ibytes
+int8 inOP
+int8 needlf
+int32 wkc
+int32 expectedWKC
+int8 currentgroup
+int32 docheckstate
+EcatSlaveStates slave

@@ -1,0 +1,2 @@
+EcatSlaveState master
+EcatSlaveState[] slaves

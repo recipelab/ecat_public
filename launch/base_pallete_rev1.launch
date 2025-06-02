@@ -1,0 +1,36 @@
+<launch>
+    <arg name="motor_num" value="4"/>
+    <arg name="message_display" default="screen" doc="output type"/>
+    <arg name="main_hz" default="1000" doc="main loop herz"/>
+    <arg name="ifname" default="ecat" doc="ifname"/>
+    <arg name="launch_prefix" default="ethercat_grant" doc="launch_prefix"/>
+    <arg name="inv_motor_in_arr" default="[+1.0, +1.0, +1.0, +1.0]" doc="inv_motor_in_arr"/>
+    <arg name="ecat_drive_mode" default="[2, 2, 2, 2]" doc="EcatDriveMode"/>
+    <arg name="acc_dec_factor" default="2.0" doc="acc_dec_factor"/>
+    
+    <include file="$(find ecat)/launch/base.launch">
+        <arg name="motor_num" value="$(arg motor_num)"/>
+        <arg name="slave_name" value="[wheel_fl, wheel_fr, wheel_bl, wheel_br]"/>
+        <arg name="slave_arch" default="[5, 5, 5, 5]" doc="EcatSlaveArch"/>
+        <arg name="command_unit" value="[rpm, rpm, rpm, rpm]"/>
+        <arg name="slave_inc" value="[ls, ls, ls, ls]"/>
+        <arg name="slave_unit" value="[rpm, rpm, rpm, rpm]"/>
+        <arg name="gear_ratio" value="[+30.0, +30.0, +30.0, +30.0]"/>
+        <arg name="motor_tick" value="[+524288.0, +524288.0, +524288.0, +524288.0]"/>
+        <arg name="hom_offset" value="[+0.0, +0.0, +0.0, +0.0]"/>
+        <arg name="min_val" value="[-50.0, -50.0, -50.0, -50.0]"/>
+        <arg name="max_val" value="[+50.0, +50.0, +50.0, +50.0]"/>
+        <arg name="pully_pd_mm" value="[+0.0, +0.0, +0.0, +0.0]"/>
+        <arg name="screw_lead_mm" value="[+0.0, +0.0, +0.0, +0.0]"/>
+        <arg name="wheel_radius" value="[+0.1016, +0.1016, +0.1016, +0.1016]"/>
+        <arg name="min_val_per_sec" value="[+0.0, +0.0, +0.0, +0.0]"/>
+        <arg name="max_val_per_sec" value="[+0.0, +0.0, +0.0, +0.0]"/>
+        <arg name="message_display" value="$(arg message_display)"/>
+        <arg name="main_hz" value="$(arg main_hz)"/>
+        <arg name="ifname" value="$(arg ifname)"/>
+        <arg name="launch_prefix" value="$(arg launch_prefix)"/>
+        <arg name="inv_motor_in_arr" value="$(arg inv_motor_in_arr)"/>
+        <arg name="ecat_drive_mode" value="$(arg ecat_drive_mode)"/>
+        <arg name="acc_dec_factor" value="$(arg acc_dec_factor)"/>
+    </include>
+</launch>
