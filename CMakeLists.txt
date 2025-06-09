@@ -154,6 +154,11 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+# needed to circumvent LD_LIBRARY_PATH being emptied through ethercat_grant
+# in addition to not propagating ros_ethercat_loop RUNPATH to dependencies, in contrast to RPATH
+SET(GCC_NEWDTAGS_LINK_FLAGS "-Wl,--disable-new-dtags")
+SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${GCC_NEWDTAGS_LINK_FLAGS}")
+
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/ecat.cpp
