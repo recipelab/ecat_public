@@ -2,7 +2,7 @@
     <arg name="motor_num" value="9"/>
     <arg name="message_display" default="screen" doc="output type"/>
     <arg name="main_hz" default="1000" doc="main loop herz"/>
-    <arg name="ifname" default="ecat" doc="ifname"/>
+    <arg name="ifname" default="ecat0" doc="ifname"/>
     <arg name="launch_prefix" default="ethercat_grant" doc="launch_prefix"/>
     <arg name="inv_motor_in_arr" default="[+0.0, +1.0, +1.0, +1.0, -1.0, +0.0, +1.0, +1.0, +1.0]" doc="inv_motor_in_arr"/>
     <arg name="ecat_drive_mode" default="[0, 1, 1, 1, 1, 0, 1, 1, 1]" doc="ecat_drive_mode"/>
