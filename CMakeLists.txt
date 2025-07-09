@@ -149,7 +149,6 @@ catkin_package(
 include_directories(
 # include
   src
-  src/socketcan
   src/ethercat
   ${catkin_INCLUDE_DIRS}
 )
@@ -174,7 +173,6 @@ SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${GCC_NEWDTAGS_LINK_FLAGS}
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/ecat_node.cpp)
 add_executable(ecat src/main.cpp src/ethercat/ethercatMain.cpp)
-add_executable(test_rpm test/rpm/main.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -186,7 +184,6 @@ add_executable(test_rpm test/rpm/main.cpp)
 ## same as for the library above
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(ecat ${PROJECT_NAME}_generate_messages_cpp)
-add_dependencies(test_rpm ${PROJECT_NAME}_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(${PROJECT_NAME}_node
@@ -194,9 +191,6 @@ add_dependencies(test_rpm ${PROJECT_NAME}_generate_messages_cpp)
 # )
 target_link_libraries(ecat
 ${catkin_LIBRARIES}
-)
-target_link_libraries(test_rpm
-  ${catkin_LIBRARIES}
 )
 
 #############

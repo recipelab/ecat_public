@@ -16,7 +16,7 @@
         <arg name="command_unit" value="[rpm]"/>
         <arg name="slave_inc" value="[ls]"/>
         <arg name="slave_unit" value="[rpm]"/>
-        <arg name="gear_ratio" value="[30.0]"/>
+        <arg name="gear_ratio" value="[+30.0]"/>
         <arg name="motor_tick" value="[+524288.0]"/>
         <arg name="hom_offset" value="[+0.0]"/>
         <arg name="min_val" value="[-3000.0]"/>

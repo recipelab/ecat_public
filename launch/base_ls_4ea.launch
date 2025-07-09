@@ -4,10 +4,11 @@
     <arg name="main_hz" default="1000" doc="main loop herz"/>
     <arg name="ifname" default="ecat0" doc="ifname"/>
     <arg name="launch_prefix" default="ethercat_grant" doc="launch_prefix"/>
-    <arg name="inv_motor_in_arr" default="[+1.0, +1.0, +1.0, +1.0]" doc="inv_motor_in_arr"/>
+    <arg name="inv_motor_in_arr" default="[+1.0, -1.0, +1.0, -1.0]" doc="inv_motor_in_arr"/>
     <arg name="ecat_drive_mode" default="[2, 2, 2, 2]" doc="EcatDriveMode"/>
     <arg name="acc_dec_factor" default="2.0" doc="acc_dec_factor"/>
-    
+    <arg name="sdo_ca_support" default="1" doc="sdo_ca_support"/>
+
     <include file="$(find ecat)/launch/base.launch">
         <arg name="motor_num" value="$(arg motor_num)"/>
         <arg name="slave_name" value="[wheel_fl, wheel_fr, wheel_bl, wheel_br]"/>
@@ -18,8 +19,8 @@
         <arg name="gear_ratio" value="[+30.0, +30.0, +30.0, +30.0]"/>
         <arg name="motor_tick" value="[+524288.0, +524288.0, +524288.0, +524288.0]"/>
         <arg name="hom_offset" value="[+0.0, +0.0, +0.0, +0.0]"/>
-        <arg name="min_val" value="[-50.0, -50.0, -50.0, -50.0]"/>
-        <arg name="max_val" value="[+50.0, +50.0, +50.0, +50.0]"/>
+        <arg name="min_val" value="[-3000.0, -3000.0, -3000.0, -3000.0]"/>
+        <arg name="max_val" value="[+3000.0, +3000.0, +3000.0, +3000.0]"/>
         <arg name="pully_pd_mm" value="[+0.0, +0.0, +0.0, +0.0]"/>
         <arg name="screw_lead_mm" value="[+0.0, +0.0, +0.0, +0.0]"/>
         <arg name="wheel_radius" value="[+0.1016, +0.1016, +0.1016, +0.1016]"/>
@@ -32,5 +33,6 @@
         <arg name="inv_motor_in_arr" value="$(arg inv_motor_in_arr)"/>
         <arg name="ecat_drive_mode" value="$(arg ecat_drive_mode)"/>
         <arg name="acc_dec_factor" value="$(arg acc_dec_factor)"/>
+        <arg name="sdo_ca_support" value="$(arg sdo_ca_support)"/>
     </include>
 </launch>
